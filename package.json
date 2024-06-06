@@ -8,8 +8,8 @@
     "npm": "10.8.0"
   },
   "scripts": {
-    "dev": "nodemon index.js",
     "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm install && cd client && npm install && npm run prebuild && npm run build"
   },
