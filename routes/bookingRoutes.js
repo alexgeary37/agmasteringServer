@@ -15,6 +15,22 @@ const requireAuth = require("../middleware/requireAuth");
 // Require authentication for all booking routes
 router.use(requireAuth);
 
+router.post("/testProcessPayment", (req, res) => {
+  try {
+    const { paymentMethodId, quote, service } = req.body;
+
+    // Simulate a successful payment processing
+    res.json({
+      status: "success",
+      message: "Payment processed successfully",
+      data: { paymentMethodId, quote, service },
+    });
+  } catch (error) {
+    console.error("Error on testProcessPayment:", error);
+    res.json({ message: "Error on testProcessPayment", error: error });
+  }
+});
+
 router.post("/processPayment", async (req, res) => {
   try {
     const { paymentMethodId, quote, service } = req.body;
