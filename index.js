@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
-const path = require("path");
+const cors = require('cors');
+// const path = require("path");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const contactRoutes = require("./routes/contactRoutes");
@@ -13,17 +14,19 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 // app.use(express.static(path.join(__dirname, "/client/build")));
-app.use(express.static(path.join(__dirname, "client", "build")));
+//app.use(express.static(path.join(__dirname, "client", "build")));
 
 // Routes
 app.use("/users", userRoutes);
 app.use("/contacts", contactRoutes);
 app.use("/bookings", bookingRoutes);
-app.get("*", (req, res) => {
+// app.get("*", (req, res) => {
   // res.sendFile(path.join(__dirname, "/client/build", "index.html"));
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+  // res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
+
 // Connect to MongoDB
 mongoose
   .connect(uri)
